@@ -1,0 +1,28 @@
+body {
+  font-family: verdana, arial, helvetica;
+  font-size: 0.9em;
+  background-color: #CCCCCC;
+}
+#contents{
+  background-color: #FFFFFF;
+  width: 85%;
+  max-width: 1000px;
+  padding: 10px 30px;
+  margin: 15px auto 60px auto;
+  border: 1px solid #999999;
+  border-radius: 15px;
+  overflow: auto;
+}
+strong em {
+  font-size: 1.2em;
+  color: red;
+}
+code {
+  white-space: pre; 
+}
+blockquote {
+  font-style: italic;
+  color: #86867b;
+  font-family: Georgia, serif;
+  font-size: 1.1em;
+}

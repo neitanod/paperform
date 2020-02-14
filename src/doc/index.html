@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notas</title>
+    <link rel="stylesheet" type="text/css" href="inc/notas.css"/>
+    <script src="inc/jquery-2.1.1.min.js"></script>
+    <script src="inc/markdown.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicons/favicon-128x128.png" sizes="128x128">
+    <link rel="icon" type="image/png" href="/favicons/favicon-64x64.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+    <script>
+      jQuery(function(){
+        var s = (location.href.split("?")[1]||'index');
+        s = s.includes('&')?s.substring(0, s.indexOf('&')):s;
+        $('#contents').load(s+'.md', function(){$('#contents').html(markdown.toHTML($('#contents').text()))});
+      });
+    </script>
+  </head>
+  <body>
+    <div id="contents">
+    <img style="display:block; margin: auto;" src="inc/loading.gif" alt="Cargando...">
+    </div>
+  </body>
+</html>
