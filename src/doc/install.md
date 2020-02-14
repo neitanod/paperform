@@ -57,3 +57,13 @@ Existen ventajas por usar el método SSH en vez de HTTPS (no tener que escribir
 la contraseña de GitHub cada vez que queremos subir cambios, sobre todo), pero
 el método HTTPS no requiere ninguna configuración ni instalación de programas
 adicionales, mientras que el protocolo SSH puede requerirlos.
+
+Por último, instalar el servidor local:
+
+```
+npm install
+```
+
+Este útlimo comando no instala dependencias de la app (la app ya incluye todas sus 
+dependencias, y no necesita ser compilada).  Sólo se necesita ejecutar para
+correr el servidor local de desarrollo con `npm start`
