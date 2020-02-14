@@ -12,7 +12,8 @@ También se necesita tener [Git instalado](https://www.google.com/search?q=como+
 
 Por último, se necesita una cuenta en [GitHub](https://github.com).
 
-Lo primero que hay que hacer es crear un "fork" del repositorio de Paperform.
+Lo primero que hay que hacer es crear un "fork" del [repositorio de Paperform]
+(https://github.com/neitanod/paperform).
 En otras palabras: crear un repo propio clonando el contenido del repo de 
 Paperform.  Haber realizado este "fork" nos va a permitir subir a GitHub los 
 cambios que hagamos sin necesidad de que el dueño del repo principal de Paperform
