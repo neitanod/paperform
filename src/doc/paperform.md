@@ -18,3 +18,5 @@ etiquetas que son muy baratas:
 La app de paperform va a estar alojada en: [https://paperform.ip1.cc](https://paperform.ip1.cc).
 Por ahora sólo hay una versión no funcional que tiene lo desarrollado hasta
 ahora.
+
+TO DO: Explicar lo que la app tiene que hacer.
