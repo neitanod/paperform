@@ -9,4 +9,4 @@ correcto de nuestra plantilla de etiquetas autoadhesivas.
 La idea es poder usarla con cualquier plantilla de etiquetas, por ejemplo, estas
 etiquetas que son muy baratas:
 
-TODO: Se necesita la imagen aquí 
+![Etiquetas](images/paperform_etiquetas.png)
