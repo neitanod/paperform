@@ -18,3 +18,7 @@ mostrar sus avances aquí también.
   - [Ejecutando la app con npm] (?run)
   - [Escribiendo este diario del desarrollo] (?log)
 
+### Diario de desarrollo
+
+  - [1 de Marzo de 2020 - Escribiendo los módulos Vue más cómodadmente](?20200301)
+
