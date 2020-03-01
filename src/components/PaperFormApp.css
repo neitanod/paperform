@@ -1,0 +1,68 @@
+.paperform-app .main {
+    overflow: hidden;
+}
+
+.paperform-app {
+    font-family: Verdana, Arial, Helvética;
+}
+.paperform-app .main.portrait {
+    height: 1440px;
+    width: 1000px;
+}
+.paperform-app .main.landscape {
+    height: 1000px;
+    width: 1440px;
+}
+.paperform-app .main {
+    border: 1px solid transparent;
+}
+.paperform-app .main.border {
+    border: 1px solid grey;
+}
+.paperform-app .options {
+    position: fixed;
+    top: 20px;
+    right: 0;
+    min-width: 100px;
+    background-color: white;
+    border: 1px solid gray;
+}
+.paperform-app .controls-bar {
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+}
+@media print {
+    .paperform-app .controls {
+        display: none;
+    }
+}
+
+.paperform-app .controls-bar {
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+}
+
+
+.paperform-app .main.grid {
+    background-color: #FFFFFF;
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background-image: -webkit-linear-gradient(lightgrey 2px, transparent 2px),
+                    -webkit-linear-gradient(0, lightgrey 2px, transparent 2px),
+                    -webkit-linear-gradient(rgba(200,200,200,.3) 1px, transparent 1px),
+                    -webkit-linear-gradient(0, rgba(200,200,200,.3) 1px, transparent 1px);
+    background-image: -moz-linear-gradient(lightgrey 2px, transparent 2px),
+                    -moz-linear-gradient(0, lightgrey 2px, transparent 2px),
+                    -moz-linear-gradient(rgba(200,200,200,.3) 1px, transparent 1px),
+                    -moz-linear-gradient(0, rgba(200,200,200,.3) 1px, transparent 1px);
+    background-image: linear-gradient(lightgrey 2px, transparent 2px),
+                    linear-gradient(90deg, lightgrey 2px, transparent 2px),
+                    linear-gradient(rgba(200,200,200,.3) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(200,200,200,.3) 1px, transparent 1px);
+    -pie-background: linear-gradient(lightgrey 2px, transparent 2px) -2px -2px / 100px,
+                    linear-gradient(90deg, lightgrey 2px, transparent 2px) -2px -2px / 100px,
+                    linear-gradient(rgba(200,200,200,.3) 1px, transparent 1px) -1px -1px / 20px,
+                    linear-gradient(90deg, rgba(200,200,200,.3) 1px, transparent 1px) -1px -1px / 20px,
+                    #269;
+    xbehavior: xurl(/pie/PIE.htc);
+}
