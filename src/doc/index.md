@@ -20,5 +20,5 @@ mostrar sus avances aquí también.
 
 ### Diario de desarrollo
 
-  - [1 de Marzo de 2020 - Escribiendo los módulos Vue más cómodadmente](?20200301)
+  - [1 de Marzo de 2020 - Escribiendo los módulos Vue más cómodadmente](?journal/20200301)
 
