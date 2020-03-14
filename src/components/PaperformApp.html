@@ -1,7 +1,6 @@
-<div class="paperform-app" id="paperform-app-template">
-
+<div class="paperform-app">
     <pa-window shadow rounded-top non-printable non-selectable>
-        <pa-window-title gray-gradient class="controls-bar" @click="controls.options = !controls.options">
+        <pa-window-title gray-gradient class="controls-bar" @dblclick.native="controls.options = !controls.options">
             Options
         </pa-window-title>
         <div class="controls-contents" v-if="controls.options">
