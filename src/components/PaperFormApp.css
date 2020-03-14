@@ -20,24 +20,29 @@
     border: 1px solid grey;
 }
 .paperform-app .options {
-    position: fixed;
-    top: 20px;
-    right: 0;
     min-width: 100px;
-    background-color: white;
-    border: 1px solid gray;
 }
+
 @media print {
-    .paperform-app .controls {
+    *[non-printable] {
         display: none;
     }
 }
 
-.paperform-app .controls-bar {
-    border-bottom: 1px solid gray;
-    cursor: pointer;
-}
+/* Queremos que non-selectable sea un atributos usables en toda la app, pero
+ * no lo quitamos del componente window-title porque no está mal que el
+ * componente maneje eso para sí mismo (ya que lo podríamos llegar a usar en
+ * otro proyecto que no sea Paperform) */
 
+*[non-selectable] {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}
 
 .paperform-app .main.grid {
     background-color: #FFFFFF;
