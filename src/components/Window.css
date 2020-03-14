@@ -1,15 +1,13 @@
 .pa-window {
     position: absolute;
     border: 1px solid #E0E0E0;
-    background: #FFFFFF; /* fondo blanco por defecto */
+    background: #FFFFFF;
 }
 
 .pa-window[shadow] {
     box-shadow: 0px 3px 5px 0 rgba(0,0,0,0.10);
 }
 
-/* Queremos que lo siguiente sólo se aplique si la ventana
- * tiene la propiedad "rounded-top" */
 .pa-window[rounded-top] {
     border-radius: 5px 5px 0 0;
 }
@@ -19,10 +17,6 @@
     cursor: pointer;
     padding: 5px 10px;
 
-
-    /* Queremos que no se seleccione el texto del titulo cuando movemos
-     * el mouse con la intención de arrastrar y soltar la ventana */
-
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
        -khtml-user-select: none; /* Konqueror HTML */
@@ -31,10 +25,5 @@
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Opera and Firefox */
 
-
-    /* Le agrego un gradiente a la barra de título.
-     * Lo generé usando: https://cssgradient.io
-     * y lo mejoré mirando las DevTools de Google Chrome
-     */
     background: linear-gradient(180deg, rgb(249, 249, 249) 0%, rgb(211, 211, 211) 100%);
 }
