@@ -19,6 +19,9 @@
 .paperform-app .main.border {
     border: 1px solid grey;
 }
+.paperform-app .controls-contents {
+    padding: 10px;
+}
 .paperform-app .options {
     min-width: 100px;
 }
