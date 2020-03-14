@@ -1,8 +1,11 @@
 <div class="paperform-app">
     <pa-window shadow rounded-top non-printable non-selectable top="20" right="20" fixed>
-        <pa-window-title drag-handle gray-gradient class="controls-bar" @dblclick.native="controls.options = !controls.options">
-            Options
-        </pa-window-title>
+        <template v-slot:title drag-handle gray-gradient class="controls-bar" @dblclick.native="controls.options = !controls.options">
+            <div @dblclick="controls.options = !controls.options">
+                Options
+            </div>
+        </template>
+
         <div class="controls-contents" v-if="controls.options">
             <input type="checkbox" v-model="border"> Border<br/>
             <input type="radio" v-model="landscape" value="1"> Portrait<br/>

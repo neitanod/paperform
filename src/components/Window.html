@@ -1,3 +1,7 @@
 <div class="pa-window">
+    <pa-window-title v-if="hasSlot('title')" @mousedown.native="mousedown">
+        <slot name="title">
+        </slot>
+    </pa-window-title>
     <slot></slot>
 </div>
