@@ -83,8 +83,6 @@ export default async function() {
                     }
                     this.drag_last_x = event.pageX;
                     this.drag_last_y = event.pageY;
-                    console.log("pageX: "+ event.pageX + " - pageY: "+ event.pageY);
-                    console.log("deltaX: "+ deltaX + " - deltaY: "+ deltaY);
                     this.setX(deltaX);
                     this.setY(deltaY);
                 }
