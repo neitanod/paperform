@@ -11,8 +11,11 @@ export default {
     name: 'App',
     template: document.getElementById("paperform-app-template").outerHTML,
     components: {
-        'pa:number-row': NumberRow,
-        'pa:window': Window
+        // A VUE no le gustó que use el caracter ":" en el nombre del elemento
+        // (aunque haya funcionado).  Me mandó a leer esto:
+        // https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name
+        'pa-number-row': NumberRow,
+        'pa-window': Window
     },
     data: function() {
         return {

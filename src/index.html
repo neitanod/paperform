@@ -8,11 +8,7 @@
         <div v-templates>
             <div class="paperform-app" id="paperform-app-template">
 
-                <!-- Reemplacemos el contenido de relleno por el verdader contenido de
-                     la ventana.  En otras palabras, metemos el div con las opciones
-                     de PaperForm adentro de la ventana. -->
-
-                <pa:window>
+                <pa-window>
                     <div class="controls">
                         <div class="controls-bar" @click="controls.options = !controls.options">
                             Options
@@ -25,11 +21,11 @@
                             <input type="checkbox" v-model="numbers"> Positioning numbers<br/>
                         </div>
                     </div>
-                </pa:window>
+                </pa-window>
 
                 <div class="main" :class="cssClassesMain()">
-                    <pa:number-row v-if="numbers"></pa:number-row>
-                    <pa:number-row v-if="numbers"></pa:number-row>
+                    <pa-number-row v-if="numbers"></pa-number-row>
+                    <pa-number-row v-if="numbers"></pa-number-row>
                     {{ greeting }} {{ border }}
                 </div>
             </div>
