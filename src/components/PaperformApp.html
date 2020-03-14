@@ -1,6 +1,6 @@
 <div class="paperform-app">
     <pa-window shadow rounded-top non-printable non-selectable top="20" right="20" fixed>
-        <template v-slot:title drag-handle gray-gradient class="controls-bar" @dblclick.native="controls.options = !controls.options">
+        <template v-slot:title drag-handle gray-gradient class="controls-bar">
             <div @dblclick="controls.options = !controls.options">
                 Options
             </div>
@@ -12,6 +12,19 @@
             <input type="radio" v-model="landscape" value="2"> Landscape<br/>
             <input type="checkbox" v-model="grid"> Grid<br/>
             <input type="checkbox" v-model="numbers"> Positioning numbers<br/>
+        </div>
+    </pa-window>
+
+    <pa-window shadow rounded-top non-printable non-selectable top="200" right="20" fixed>
+        <template v-slot:title drag-handle gray-gradient class="controls-bar">
+            <div @dblclick="controls.help = !controls.help">
+                Help
+            </div>
+        </template>
+
+        <div class="controls-contents" v-if="controls.help">
+            <p>Esta es la ayuda.</p>
+            <p>No muy útil por el momento.</p>
         </div>
     </pa-window>
 

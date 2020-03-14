@@ -19,7 +19,8 @@ export default async function() {
             return {
                 greeting: "Hi there!",
                 controls: {
-                    options: true
+                    options: true,
+                    help: false
                 },
                 border: true,
                 landscape: false,
