@@ -7,6 +7,9 @@
 
         <div v-templates>
             <div class="paperform-app" id="paperform-app-template">
+
+                <pa:window>1234</pa:window>
+
                 <div class="controls options">
                     <div class="controls-bar" @click="controls.options = !controls.options">
                         Options
@@ -20,8 +23,8 @@
                     </div>
                 </div>
                 <div class="main" :class="cssClassesMain()">
-                    <number-row v-if="numbers"></number-row>
-                    <number-row v-if="numbers"></number-row>
+                    <pa:number-row v-if="numbers"></pa:number-row>
+                    <pa:number-row v-if="numbers"></pa:number-row>
                     {{ greeting }} {{ border }}
                 </div>
             </div>
