@@ -4,7 +4,7 @@ const addCssFile = functions.addCssFile;
 
 export default async function() {
     return {
-        name: 'Window',
+        name: 'WindowTitle',
         template: await readFile('components/WindowTitle.html'),
         data: function() {
             return {
