@@ -27,10 +27,6 @@
     background-color: white;
     border: 1px solid gray;
 }
-.paperform-app .controls-bar {
-    border-bottom: 1px solid gray;
-    cursor: pointer;
-}
 @media print {
     .paperform-app .controls {
         display: none;

@@ -1,21 +1,18 @@
-.window {
+.pa-window {
     position: absolute;
     border: 1px solid #E0E0E0;
-    z-index: 8000;
+    background: #FFFFFF; /* fondo blanco por defecto */
 }
 
 
 /* Queremos que lo siguiente sólo se aplique si la ventana
- * tiene la clase "shadow" */
-.window.shadow {
-    box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.08);
+ * tiene la propiedad "shadow" */
+.pa-window[shadow] {
+    box-shadow: 0px 3px 5px 0 rgba(0,0,0,0.10);
+}
 
-    /* la sombra de la "caja" del div */
-    /* los 4 valores en pixels:
-     * desplazamiento en x, desplazamiento en y, blur, spread */
-
-    /* luego el color en formato rgba() = red, green, blue, alpha */
-    /* 0,0,0 = negro */
-    /* el cuarto número (alpha) es la transparencia (8%) */
-
+.pa-window-title {
+    border-bottom: 1px solid #E0E0E0;
+    cursor: pointer;
+    padding: 5px 10px;
 }
