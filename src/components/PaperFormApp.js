@@ -8,9 +8,6 @@ import WindowTitle from './WindowTitle.js';
 
 addCssFile('./components/PaperFormApp.css');
 
-// Convertimos el export en una función async, que Vue también acepta y nos
-// permite cargar el template con `await readFile()`
-
 export default async function() {
     return {
         name: 'App',

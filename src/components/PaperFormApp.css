@@ -29,11 +29,6 @@
     }
 }
 
-/* Queremos que non-selectable sea un atributos usables en toda la app, pero
- * no lo quitamos del componente window-title porque no está mal que el
- * componente maneje eso para sí mismo (ya que lo podríamos llegar a usar en
- * otro proyecto que no sea Paperform) */
-
 *[non-selectable] {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
