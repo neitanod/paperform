@@ -1,0 +1,22 @@
+<div class="paperform-app" id="paperform-app-template">
+
+    <pa-window shadow rounded-top>
+        <pa-window-title gray-gradient class="controls-bar" @click="controls.options = !controls.options">
+            Options
+        </pa-window-title>
+        <div class="controls-contents" v-if="controls.options">
+            <input type="checkbox" v-model="border"> Border<br/>
+            <input type="radio" v-model="landscape" value="1"> Portrait<br/>
+            <input type="radio" v-model="landscape" value="2"> Landscape<br/>
+            <input type="checkbox" v-model="grid"> Grid<br/>
+            <input type="checkbox" v-model="numbers"> Positioning numbers<br/>
+        </div>
+    </pa-window>
+
+    <div class="main" :class="cssClassesMain()">
+        <pa-number-row v-if="numbers"></pa-number-row>
+        <pa-number-row v-if="numbers"></pa-number-row>
+        {{ greeting }} {{ border }}
+    </div>
+</div>
+

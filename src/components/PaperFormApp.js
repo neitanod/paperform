@@ -8,36 +8,38 @@ import WindowTitle from './WindowTitle.js';
 
 addCssFile('./components/PaperFormApp.css');
 
-export default {
-    name: 'App',
-    template: document.getElementById("paperform-app-template").outerHTML,
-    components: {
-        // A VUE no le gustó que use el caracter ":" en el nombre del elemento
-        // (aunque haya funcionado).  Me mandó a leer esto:
-        // https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name
-        'pa-number-row':   NumberRow,
-        'pa-window':       Window,
-        'pa-window-title': WindowTitle,
-    },
-    data: function() {
-        return {
-            greeting: "Hi there!",
-            controls: {
-                options: true
-            },
-            border: true,
-            landscape: false,
-            grid: false,
-            numbers: false
-        }
-    },
-    methods: {
-        cssClassesMain: function() {
+// Convertimos el export en una función async, que Vue también acepta y nos
+// permite cargar el template con `await readFile()`
+
+export default async function() {
+    return {
+        name: 'App',
+        template: await readFile("components/PaperformApp.html"),
+        components: {
+            'pa-number-row':   NumberRow,
+            'pa-window':       Window,
+            'pa-window-title': WindowTitle,
+        },
+        data: function() {
             return {
-                border: this.border,
-                portrait: this.landscape-2,
-                landscape: this.landscape-1,
-                grid:this.grid
+                greeting: "Hi there!",
+                controls: {
+                    options: true
+                },
+                border: true,
+                landscape: false,
+                grid: false,
+                numbers: false
+            }
+        },
+        methods: {
+            cssClassesMain: function() {
+                return {
+                    border: this.border,
+                    portrait: this.landscape-2,
+                    landscape: this.landscape-1,
+                    grid:this.grid
+                }
             }
         }
     }
