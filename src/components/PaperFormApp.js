@@ -4,6 +4,7 @@ const addCssFile = functions.addCssFile;
 
 import NumberRow from './NumberRow.js';
 import Window from './Window.js';
+import WindowTitle from './WindowTitle.js';
 
 addCssFile('./components/PaperFormApp.css');
 
@@ -14,8 +15,9 @@ export default {
         // A VUE no le gustó que use el caracter ":" en el nombre del elemento
         // (aunque haya funcionado).  Me mandó a leer esto:
         // https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name
-        'pa-number-row': NumberRow,
-        'pa-window': Window
+        'pa-number-row':   NumberRow,
+        'pa-window':       Window,
+        'pa-window-title': WindowTitle,
     },
     data: function() {
         return {

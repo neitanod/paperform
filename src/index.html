@@ -8,11 +8,11 @@
         <div v-templates>
             <div class="paperform-app" id="paperform-app-template">
 
-                <pa-window class="shadow">
+                <pa-window shadow>
                     <div class="controls">
-                        <div class="controls-bar" @click="controls.options = !controls.options">
+                        <pa-window-title class="controls-bar" @click="controls.options = !controls.options">
                             Options
-                        </div>
+                        </pa-window-title>
                         <div class="controls-contents" v-if="controls.options">
                             <input type="checkbox" v-model="border"> Border<br/>
                             <input type="radio" v-model="landscape" value="1"> Portrait<br/>
