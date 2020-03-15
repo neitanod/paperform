@@ -11,7 +11,6 @@
             <input type="radio" v-model="landscape" value="1"> Portrait<br/>
             <input type="radio" v-model="landscape" value="2"> Landscape<br/>
             <input type="checkbox" v-model="grid"> Grid<br/>
-            <input type="checkbox" v-model="numbers"> Positioning numbers<br/>
         </div>
     </pa-window>
 
@@ -29,6 +28,6 @@
     </pa-window>
 
     <div class="main" :class="cssClassesMain()">
-        <pa-positioning-grid v-if="postioning_grid"></pa-positioning-grid>
+        <pa-positioning-grid v-if="grid"></pa-positioning-grid>
     </div>
 </div>

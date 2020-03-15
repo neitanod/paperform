@@ -31,7 +31,6 @@ export default async function() {
                 border: true,
                 landscape: false,
                 grid: false,
-                numbers: false
             }
         },
         methods: {
