@@ -29,8 +29,6 @@
     </pa-window>
 
     <div class="main" :class="cssClassesMain()">
-        <pa-number-row v-if="numbers"></pa-number-row>
-        <pa-number-row v-if="numbers"></pa-number-row>
-        {{ greeting }} {{ border }}
+        <pa-positioning-grid v-if="postioning_grid"></pa-positioning-grid>
     </div>
 </div>

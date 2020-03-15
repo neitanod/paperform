@@ -2,7 +2,8 @@ import functions from './functions.js';
 const readFile = functions.readFile;
 const addCssFile = functions.addCssFile;
 
-import NumberRow from './NumberRow.js';
+// Reemplazamos el number-row por un positioning grid que pronto vamos a crear
+import PositioningGrid from './PositioningGrid.js';
 import Window from './Window.js';
 
 addCssFile('./components/PaperFormApp.css');
@@ -12,7 +13,7 @@ export default async function() {
         name: 'App',
         template: await readFile("components/PaperformApp.html"),
         components: {
-            'pa-number-row':   NumberRow,
+            'pa-positioning-grid':   PositioningGrid,
             'pa-window':       Window,
         },
         data: function() {
