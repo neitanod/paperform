@@ -1,74 +1,9 @@
-<div class="number-row" id="number-row-template">
-    <div class="number col 0">0</div>
-    <div class="number col 1">1</div>
-    <div class="number col 2">2</div>
-    <div class="number col 3">3</div>
-    <div class="number col 4">4</div>
-    <div class="number col 5">5</div>
-    <div class="number col 6">6</div>
-    <div class="number col 7">7</div>
-    <div class="number col 8">8</div>
-    <div class="number col 9">9</div>
-    <div class="number col 10">0</div>
-    <div class="number col 11">1</div>
-    <div class="number col 12">2</div>
-    <div class="number col 13">3</div>
-    <div class="number col 14">4</div>
-    <div class="number col 15">5</div>
-    <div class="number col 16">6</div>
-    <div class="number col 17">7</div>
-    <div class="number col 18">8</div>
-    <div class="number col 19">9</div>
-    <div class="number col 20">0</div>
-    <div class="number col 21">1</div>
-    <div class="number col 22">2</div>
-    <div class="number col 23">3</div>
-    <div class="number col 24">4</div>
-    <div class="number col 25">5</div>
-    <div class="number col 26">6</div>
-    <div class="number col 27">7</div>
-    <div class="number col 28">8</div>
-    <div class="number col 29">9</div>
-    <div class="number col 30">0</div>
-    <div class="number col 31">1</div>
-    <div class="number col 32">2</div>
-    <div class="number col 33">3</div>
-    <div class="number col 34">4</div>
-    <div class="number col 35">5</div>
-    <div class="number col 36">6</div>
-    <div class="number col 37">7</div>
-    <div class="number col 38">8</div>
-    <div class="number col 39">9</div>
-    <div class="number col 40">0</div>
-    <div class="number col 41">1</div>
-    <div class="number col 42">2</div>
-    <div class="number col 43">3</div>
-    <div class="number col 44">4</div>
-    <div class="number col 45">5</div>
-    <div class="number col 46">6</div>
-    <div class="number col 47">7</div>
-    <div class="number col 48">8</div>
-    <div class="number col 49">9</div>
-    <div class="number col 50">0</div>
-    <div class="number col 51">1</div>
-    <div class="number col 52">2</div>
-    <div class="number col 53">3</div>
-    <div class="number col 54">4</div>
-    <div class="number col 55">5</div>
-    <div class="number col 56">6</div>
-    <div class="number col 57">7</div>
-    <div class="number col 58">8</div>
-    <div class="number col 59">9</div>
-    <div class="number col 60">0</div>
-    <div class="number col 61">1</div>
-    <div class="number col 62">2</div>
-    <div class="number col 63">3</div>
-    <div class="number col 64">4</div>
-    <div class="number col 65">5</div>
-    <div class="number col 66">6</div>
-    <div class="number col 67">7</div>
-    <div class="number col 68">8</div>
-    <div class="number col 69">9</div>
-    <div class="number col 70">0</div>
-    <div class="number col 71">1</div>
+<div class="positioning-grid">
+    <table>
+    <tr v-for="i in 71" :key="i">
+        <td class="positioning-grid-cell" v-for="j in 63" :key="j">
+            {{ charlabel(i-1)+charlabel(j-1) }}
+        </td>
+    </tr>
+    </table>
 </div>

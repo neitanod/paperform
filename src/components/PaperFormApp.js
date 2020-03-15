@@ -39,7 +39,6 @@ export default async function() {
                     border: this.border,
                     portrait: this.landscape-2,
                     landscape: this.landscape-1,
-                    grid:this.grid
                 }
             }
         }

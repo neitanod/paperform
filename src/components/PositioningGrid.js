@@ -13,6 +13,10 @@ export default async function() {
             }
         },
         methods: {
+            charlabel: function(i) {
+                var n = i%36;
+                return String.fromCharCode(n+(n<10?48:55));
+            }
         }
     }
 }
