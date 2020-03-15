@@ -76,15 +76,35 @@ export default async function() {
             dragged: function(event) {
                 if( this.dragging ) {
                     var deltaX = 0;
+                    var pageX = null;
+                    var pageY = null;
+
+                    if ( event.changedTouches && event.changedTouches.length ) {
+                        if ( event.changedTouches[0].pageX != null ) {
+                            pageX = event.changedTouches[0].pageX;
+                        }
+                        if ( event.changedTouches[0].pageY != null ) {
+                            pageY = event.changedTouches[0].pageY;
+                        }
+                    }
+
+                    if ( event.pageX != null ) {
+                        pageX = event.pageX;
+                    }
+                    if ( event.pageY != null ) {
+                        pageY = event.pageY;
+                    }
+
+
                     if ( this.drag_last_x ) {
-                        deltaX = event.pageX - this.drag_last_x;
+                        deltaX = pageX - this.drag_last_x;
                     }
                     var deltaY = 0;
                     if ( this.drag_last_y ) {
-                        deltaY = event.pageY - this.drag_last_y;
+                        deltaY = pageY - this.drag_last_y;
                     }
-                    this.drag_last_x = event.pageX;
-                    this.drag_last_y = event.pageY;
+                    this.drag_last_x = pageX;
+                    this.drag_last_y = pageY;
                     this.setX(deltaX);
                     this.setY(deltaY);
                 }
