@@ -81,10 +81,10 @@ export default async function() {
 
                     if ( event.changedTouches && event.changedTouches.length ) {
                         if ( event.changedTouches[0].pageX != null ) {
-                            pageX = event.changedTouches[0].pageX;
+                            pageX = event.changedTouches[0].screenX;
                         }
                         if ( event.changedTouches[0].pageY != null ) {
-                            pageY = event.changedTouches[0].pageY;
+                            pageY = event.changedTouches[0].screenY;
                         }
                     }
 
