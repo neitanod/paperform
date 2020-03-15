@@ -1,7 +1,7 @@
 <div class="positioning-grid">
     <table>
-    <tr v-for="i in 71" :key="i">
-        <td class="positioning-grid-cell" v-for="j in 63" :key="j">
+        <tr v-for="i in 71" :key="i" :class="'X'+charlabel(i-1)">
+            <td class="positioning-grid-cell" v-for="j in 63" :key="j" :class="'X'+charlabel(j-1)">
             {{ charlabel(i-1)+charlabel(j-1) }}
         </td>
     </tr>

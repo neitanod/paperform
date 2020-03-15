@@ -1,16 +1,22 @@
 .positioning-grid {
     font-family: "Courier New", Courier, monospace;
 }
-
 .positioning-grid table {
     border-collapse: collapse;
+}
+.positioning-grid tr.X0 td,
+.positioning-grid td.X0,
+.positioning-grid tr.XI td,
+.positioning-grid td.XI {
+    background-color: #DDD;
+    color: #000;
 }
 .positioning-grid td {
     border: 1px solid #E0E0E0;
     margin: 0;
     color: #CCC;
     min-width: 20px;
-    height: 20px;
+    height: 23px;
     font-size: 13px;
     text-align: center;
 }
