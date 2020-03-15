@@ -31,12 +31,14 @@ export default async function() {
         mounted: function() {
             this.setX(0);
             this.setY(0);
-            window.addEventListener('pointerup', this.pointerup);
+            window.addEventListener('mouseup', this.pointerup);
+            window.addEventListener('touchup', this.pointerup);
             window.addEventListener('mousemove', this.dragged);
             window.addEventListener('touchmove', this.dragged);
         },
         beforeDestroy: function() {
-            window.removeEventListener('pointerup', this.pointerup);
+            window.removeEventListener('mouseup', this.pointerup);
+            window.removeEventListener('touchup', this.pointerup);
             window.removeEventListener('mousemove', this.dragged);
             window.removeEventListener('touchmove', this.dragged);
         },
