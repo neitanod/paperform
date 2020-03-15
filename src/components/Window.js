@@ -31,12 +31,12 @@ export default async function() {
         mounted: function() {
             this.setX(0);
             this.setY(0);
-            window.addEventListener('mouseup',   this.mouseup);
-            window.addEventListener('mousemove', this.dragged);
+            window.addEventListener('pointerup',   this.pointerup);
+            window.addEventListener('pointermove', this.dragged);
         },
         beforeDestroy: function() {
-            window.removeEventListener('mouseup',   this.mouseup);
-            window.removeEventListener('mousemove', this.dragged);
+            window.removeEventListener('pointerup',   this.pointerup);
+            window.removeEventListener('pointermove', this.dragged);
         },
         methods: {
             setY: function(X) {
@@ -63,10 +63,10 @@ export default async function() {
                     || !!this.$scopedSlots[ name ]
                 );
             },
-            mousedown: function() {
+            pointerdown: function() {
                 this.dragging = true;
             },
-            mouseup: function() {
+            pointerup: function() {
                 this.dragging = false;
                 this.drag_last_x = null;
                 this.drag_last_y = null;
