@@ -26,6 +26,10 @@ html, body {
 .paperform-app .controls-contents {
     padding: 10px;
 }
+.paperform-app .controls-contents button {
+    margin: 4px;
+    min-width: 100px;
+}
 .paperform-app .options {
     min-width: 100px;
 }

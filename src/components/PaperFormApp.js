@@ -26,19 +26,26 @@ export default async function() {
                 greeting: "Hi there!",
                 controls: {
                     options: true,
+                    tools: true,
                     help: false
                 },
                 border: true,
-                landscape: false,
                 grid: false,
+                form_document: {
+                    config: {
+                        orientation: 'portrait',
+                        locked: false
+                    },
+                    elements: {}
+                }
             }
         },
         methods: {
             cssClassesMain: function() {
                 return {
                     border: this.border,
-                    portrait: this.landscape-2,
-                    landscape: this.landscape-1,
+                    portrait: this.form_document.config.orientation=='portrait',
+                    landscape: !(this.form_document.config.orientation=='portrait'),
                 }
             }
         }

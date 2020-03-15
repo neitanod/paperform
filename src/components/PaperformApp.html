@@ -8,9 +8,55 @@
 
         <div class="controls-contents" v-if="controls.options">
             <input type="checkbox" v-model="border"> Border<br/>
-            <input type="radio" v-model="landscape" value="1"> Portrait<br/>
-            <input type="radio" v-model="landscape" value="2"> Landscape<br/>
+            <input type="radio" v-model="form_document.config.orientation" value="portrait"> Portrait<br/>
+            <input type="radio" v-model="form_document.config.orientation" value="landscape"> Landscape<br/>
             <input type="checkbox" v-model="grid"> Grid<br/>
+            <input type="checkbox" v-model="form_document.config.locked"> Locked<br/>
+        </div>
+    </pa-window>
+
+    <pa-window shadow rounded-top non-printable non-selectable top="250" right="20" fixed v-if="!form_document.config.locked">
+        <template v-slot:title drag-handle gray-gradient class="controls-bar">
+            <div @dblclick="controls.tools = !controls.tools">
+                Tools
+            </div>
+        </template>
+        <div class="controls-contents" v-if="controls.tools">
+            <div>
+                <button>
+                    Add text
+                </button>
+            </div>
+            <div>
+                <button>
+                    Add box
+                </button>
+            </div>
+            <div>
+                <button>
+                    Add image
+                </button>
+            </div>
+        </div>
+    </pa-window>
+
+    <pa-window shadow rounded-top non-printable non-selectable top="400" right="20" fixed v-if="!form_document.config.locked">
+        <template v-slot:title drag-handle gray-gradient class="controls-bar">
+            <div @dblclick="controls.tools = !controls.tools">
+                Commands
+            </div>
+        </template>
+        <div class="controls-contents" v-if="controls.tools">
+            <div>
+                <button>
+                    Save form
+                </button>
+            </div>
+            <div>
+                <button>
+                    Print
+                </button>
+            </div>
         </div>
     </pa-window>
 
