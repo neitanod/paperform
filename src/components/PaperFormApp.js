@@ -2,7 +2,12 @@ import functions from './functions.js';
 const readFile = functions.readFile;
 const addCssFile = functions.addCssFile;
 
-// Reemplazamos el number-row por un positioning grid que pronto vamos a crear
+// La positioning grid es una grilla que sirve para imprimir sobre el formulario
+// o papel de igual tamaño, y usar como guia para ubicar los "slots" o etiquetas
+// en la pantalla.
+// Una vez ubicadas las etiquetas podemos ocultar la grilla e imprimir sólo los
+// valores, posicionados en los lugares correctos para que rellenen el
+// formulario correctamente.
 import PositioningGrid from './PositioningGrid.js';
 import Window from './Window.js';
 
