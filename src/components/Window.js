@@ -34,13 +34,19 @@ export default async function() {
             window.addEventListener('mouseup', this.pointerup);
             window.addEventListener('touchup', this.pointerup);
             window.addEventListener('mousemove', this.dragged);
-            window.addEventListener('touchmove', this.dragged);
+            window.addEventListener('touchmove', this.dragged, { passive: "false" });
         },
         beforeDestroy: function() {
             window.removeEventListener('mouseup', this.pointerup);
             window.removeEventListener('touchup', this.pointerup);
             window.removeEventListener('mousemove', this.dragged);
-            window.removeEventListener('touchmove', this.dragged);
+            window.removeEventListener('touchmove', this.dragged, { passive: "false" });
+
+            // De acuerdo a:
+            // Since mobile Chrome >= 56 event listeners are passive by default and passive event listeners can't prevent defaults anymore. See here You have to use active event listeners instead like so:
+
+document.addEventListener('touchstart', touchstartHandler, {passive: false});
+document.addEventListener('touchmove', touchmoveHandler, {passive: false});
         },
         methods: {
             setY: function(X) {
