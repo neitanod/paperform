@@ -77,6 +77,7 @@ export default async function() {
             },
             dragged: function(event) {
                 if( this.dragging ) {
+                    event.preventDefault();
                     var deltaX = 0;
                     var pageX = null;
                     var pageY = null;
