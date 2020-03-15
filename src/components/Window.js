@@ -32,13 +32,13 @@ export default async function() {
             this.setX(0);
             this.setY(0);
             window.addEventListener('mouseup', this.pointerup);
-            window.addEventListener('touchup', this.pointerup);
+            window.addEventListener('touchend', this.pointerup);
             window.addEventListener('mousemove', this.dragged);
             window.addEventListener('touchmove', this.dragged, { passive: "false" });
         },
         beforeDestroy: function() {
             window.removeEventListener('mouseup', this.pointerup);
-            window.removeEventListener('touchup', this.pointerup);
+            window.removeEventListener('touchend', this.pointerup);
             window.removeEventListener('mousemove', this.dragged);
             window.removeEventListener('touchmove', this.dragged, { passive: "false" });
 
