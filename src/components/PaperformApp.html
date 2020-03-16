@@ -10,7 +10,7 @@
             <input type="checkbox" v-model="border"> Border<br/>
             <input type="radio" v-model="form_document.config.orientation" value="portrait"> Portrait<br/>
             <input type="radio" v-model="form_document.config.orientation" value="landscape"> Landscape<br/>
-            <input type="checkbox" v-model="grid"> Grid<br/>
+            <input type="checkbox" v-model="grid_visible"> Grid<br/>
             <input type="checkbox" v-model="form_document.config.locked"> Locked<br/>
         </div>
     </pa-window>
@@ -28,8 +28,13 @@
                 </button>
             </div>
             <div>
-                <button @click="print()">
-                    Print
+                <button @click="printGrid()">
+                    Print Grid
+                </button>
+            </div>
+            <div>
+                <button @click="printContent()">
+                    Print Content
                 </button>
             </div>
         </div>
@@ -74,7 +79,7 @@
     </pa-window>
 
     <div class="main" :class="cssClassesMain()">
-        <pa-positioning-grid v-if="grid"></pa-positioning-grid>
-        <pa-element v-for="(element, index) in form_document.elements" :key="index" ></pa-element>
+        <pa-positioning-grid v-if="grid_visible"></pa-positioning-grid>
+        <pa-element v-if="content_visible" v-for="(element, index) in form_document.elements" :key="index" ></pa-element>
     </div>
 </div>

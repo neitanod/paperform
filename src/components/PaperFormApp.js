@@ -32,7 +32,8 @@ export default async function() {
                     tools: true,
                 },
                 border: true,
-                grid: false,
+                grid_visible: false,
+                content_visible: true,
                 form_document: {
                     config: {
                         orientation: 'portrait',
@@ -53,8 +54,27 @@ export default async function() {
                     landscape: !(this.form_document.config.orientation=='portrait'),
                 }
             },
-            print: function() {
-                window.print();
+            printContent: function() {
+                return this.print('content');
+            },
+            printGrid: function() {
+                return this.print('grid');
+            },
+            print: function(what) {
+                var self = this;
+                var grid_was_visible = this.grid_visible;
+                var content_was_visible = this.content_visible;
+
+                this.grid_visible = (what == 'grid');
+                this.content_visible = (what == 'content');
+
+                setTimeout(
+                    () => {
+                        window.print();
+                        this.grid_visible = grid_was_visible;
+                        this.content_visible = content_was_visible;
+                    }
+                    , 1000);
             },
             loadFromUrl: function() {
                 var self = this;
