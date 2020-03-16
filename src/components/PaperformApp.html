@@ -15,26 +15,21 @@
         </div>
     </pa-window>
 
-    <pa-window shadow rounded-top non-printable non-selectable top="250" right="20" fixed v-if="!form_document.config.locked">
+    <pa-window shadow rounded-top non-printable non-selectable top="250" right="20" fixed>
         <template v-slot:title drag-handle gray-gradient class="controls-bar">
             <div @dblclick="controls.tools = !controls.tools">
-                Tools
+                Commands
             </div>
         </template>
         <div class="controls-contents" v-if="controls.tools">
             <div>
-                <button>
-                    Add text
+                <button @click="save()">
+                    Save form
                 </button>
             </div>
             <div>
-                <button>
-                    Add box
-                </button>
-            </div>
-            <div>
-                <button>
-                    Add image
+                <button @click="print()">
+                    Print
                 </button>
             </div>
         </div>
@@ -43,18 +38,23 @@
     <pa-window shadow rounded-top non-printable non-selectable top="400" right="20" fixed v-if="!form_document.config.locked">
         <template v-slot:title drag-handle gray-gradient class="controls-bar">
             <div @dblclick="controls.tools = !controls.tools">
-                Commands
+                Tools
             </div>
         </template>
         <div class="controls-contents" v-if="controls.tools">
             <div>
-                <button>
-                    Save form
+                <button @click="addElement('text')">
+                    Add text
                 </button>
             </div>
             <div>
-                <button>
-                    Print
+                <button @click="addElement('box')">
+                    Add box
+                </button>
+            </div>
+            <div>
+                <button @click="addElement('image')">
+                    Add image
                 </button>
             </div>
         </div>
@@ -75,5 +75,6 @@
 
     <div class="main" :class="cssClassesMain()">
         <pa-positioning-grid v-if="grid"></pa-positioning-grid>
+        <pa-element v-for="(element, index) in form_document.elements" :key="index" ></pa-element>
     </div>
 </div>

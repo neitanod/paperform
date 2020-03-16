@@ -10,6 +10,7 @@ const addCssFile = functions.addCssFile;
 // formulario correctamente.
 import PositioningGrid from './PositioningGrid.js';
 import Window from './Window.js';
+import Element from './Element.js';
 
 addCssFile('./components/PaperFormApp.css');
 
@@ -20,14 +21,15 @@ export default async function() {
         components: {
             'pa-positioning-grid':   PositioningGrid,
             'pa-window':       Window,
+            'pa-element':      Element,
         },
         data: function() {
             return {
                 greeting: "Hi there!",
                 controls: {
                     options: true,
+                    help: false,
                     tools: true,
-                    help: false
                 },
                 border: true,
                 grid: false,
@@ -36,9 +38,12 @@ export default async function() {
                         orientation: 'portrait',
                         locked: false
                     },
-                    elements: {}
+                    elements: []
                 }
             }
+        },
+        mounted: function() {
+            this.loadFromUrl();
         },
         methods: {
             cssClassesMain: function() {
@@ -47,6 +52,35 @@ export default async function() {
                     portrait: this.form_document.config.orientation=='portrait',
                     landscape: !(this.form_document.config.orientation=='portrait'),
                 }
+            },
+            print: function() {
+                window.print();
+            },
+            loadFromUrl: function() {
+                var self = this;
+                if(window.location.hash) {
+                    axios.get("https://publish.ip1.cc/storage/uploads/"+window.location.hash.substr(1)+".json")
+                        .then( function(r) {
+                            self.form_document = JSON.parse(r);
+                            console.log(r);
+                        } )
+                        .catch( function(r) {
+                            // alert("No se pudo cargar el documento.");
+                            console.log("No se pudo cargar el documento.");
+                        } )
+                };
+            },
+            save: function() {
+                var self = this;
+                axios.post(
+                    "https://publish.ip1.cc",
+                    {data: self.form_document}
+                )
+                .then( function(r) { window.location.hash = r.key; } )
+                ;
+            },
+            addElement: function() {
+                this.form_document.elements.push({});
             }
         }
     }
