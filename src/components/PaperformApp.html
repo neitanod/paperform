@@ -17,11 +17,11 @@
 
     <pa-window shadow rounded-top non-printable non-selectable top="250" right="20" fixed>
         <template v-slot:title drag-handle gray-gradient class="controls-bar">
-            <div @dblclick="controls.tools = !controls.tools">
+            <div @dblclick="controls.commands = !controls.commands">
                 Commands
             </div>
         </template>
-        <div class="controls-contents" v-if="controls.tools">
+        <div class="controls-contents" v-if="controls.commands">
             <div>
                 <button @click="save()">
                     Save form

@@ -30,6 +30,7 @@ export default async function() {
                     options: true,
                     help: false,
                     tools: true,
+                    commands: true,
                 },
                 border: true,
                 grid_visible: false,
