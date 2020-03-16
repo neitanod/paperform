@@ -61,8 +61,7 @@ export default async function() {
                 if(window.location.hash) {
                     axios.get("https://publish.ip1.cc/storage/uploads/"+window.location.hash.substr(1)+".json")
                         .then( function(r) {
-                            self.form_document = JSON.parse(r);
-                            console.log(r);
+                            self.form_document = r.data;
                         } )
                         .catch( function(r) {
                             // alert("No se pudo cargar el documento.");
@@ -72,11 +71,15 @@ export default async function() {
             },
             save: function() {
                 var self = this;
-                axios.post(
-                    "https://publish.ip1.cc",
-                    {data: self.form_document}
-                )
-                .then( function(r) { window.location.hash = r.key; } )
+                var form_data = new FormData();
+                form_data.append('data', JSON.stringify(self.form_document));
+                axios({
+                    method: 'post',
+                    url: "https://publish.ip1.cc",
+                    data: form_data,
+                    headers: {'Content-Type': 'multipart/form-data' }
+                })
+                .then( function(r) { window.location.hash = r.data.key; } )
                 ;
             },
             addElement: function() {
