@@ -99,7 +99,10 @@ export default async function() {
                     data: form_data,
                     headers: {'Content-Type': 'multipart/form-data' }
                 })
-                .then( function(r) { window.location.hash = r.data.key; } )
+                .then( function(r) {
+                    window.location.hash = r.data.key;
+                    alert("Current form was saved under current URL.\nYou can bookmark it for future use.\nYou can also share it.");
+                } )
                 ;
             },
             addElement: function() {
