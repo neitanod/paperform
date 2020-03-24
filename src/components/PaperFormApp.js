@@ -20,8 +20,8 @@ export default async function() {
         template: await readFile("components/PaperformApp.html"),
         components: {
             'pa-positioning-grid':   PositioningGrid,
-            'pa-window':       Window,
-            'pa-element':      Element,
+            'pa-window':         Window,
+            'pa-element':        Element,
         },
         data: function() {
             return {
@@ -106,8 +106,14 @@ export default async function() {
                 } )
                 ;
             },
-            addElement: function() {
-                this.form_document.elements.push({});
+            addTextElement: function() {
+                this.form_document.elements.push({ type: "text", text: "" });
+            },
+            addBoxElement: function() {
+                this.form_document.elements.push({ type: "box", top: 100, left: 100, height: 100, width: 100 });
+            },
+            addImageElement: function() {
+                this.form_document.elements.push({ type: "image", url: "no_image.png", top: 100, left: 100, height: 100, width: 100, style: "stretch" });
             }
         }
     }

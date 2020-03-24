@@ -48,17 +48,17 @@
         </template>
         <div class="controls-contents" v-if="controls.tools">
             <div>
-                <button @click="addElement('text')">
+                <button @click="addTextElement()">
                     Add text
                 </button>
             </div>
             <div>
-                <button @click="addElement('box')">
+                <button @click="addBoxElement()">
                     Add box
                 </button>
             </div>
             <div>
-                <button @click="addElement('image')">
+                <button @click="addImageElement()">
                     Add image
                 </button>
             </div>
@@ -80,6 +80,11 @@
 
     <div class="main" :class="cssClassesMain()">
         <pa-positioning-grid v-if="grid_visible"></pa-positioning-grid>
-        <pa-element v-if="content_visible" v-for="(element, index) in form_document.elements" :key="index" ></pa-element>
+        <pa-element
+            v-if="content_visible"
+            v-for="(element, index) in form_document.elements"
+            :key="index"
+            :element="element"
+        />
     </div>
 </div>
