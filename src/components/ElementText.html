@@ -1,3 +1,8 @@
-<div class="pa-element-text">
+<span
+    class="pa-element-text"
+    contenteditable
+    @input="handleInput"
+    :style="element.styles"
+>
     {{ element.text }}
-</div>
+</span>

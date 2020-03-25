@@ -1,4 +1,7 @@
 div.pa-element-box {
     border: 1px solid red;
-    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }

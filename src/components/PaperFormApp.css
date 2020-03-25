@@ -18,6 +18,7 @@ html, body {
     width: 1440px;
 }
 .paperform-app .main {
+    background-color: white;
     border: 1px solid transparent;
 }
 .paperform-app .main.border {

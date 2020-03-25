@@ -20,6 +20,9 @@ export default async function() {
         beforeDestroy: function() {
         },
         methods: {
+            handleInput(e) {
+                element.text = e.target.innerHtml;
+            }
         }
     }
 }
