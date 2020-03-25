@@ -1,1 +1,10 @@
-<component v-bind:is="'pa-element-'+element.type" class="pa-element" :element="element" />
+<moveable
+    class="moveable"
+    v-bind="moveable"
+    @drag="handleDrag"
+    @resize="handleResize"
+    @scale="handleScale"
+    @rotate="handleRotate"
+    @warp="handleWarp">
+    <component v-bind:is="'pa-element-'+element.type" class="pa-element" :element="element" />
+</moveable>
