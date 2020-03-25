@@ -2,6 +2,7 @@
     position: absolute;
     border: 1px solid #E0E0E0;
     background: #FFFFFF;
+    z-index: 3500;
 }
 
 .pa-window[fixed] {
