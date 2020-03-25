@@ -1,4 +1,14 @@
 <div class="paperform-app">
+    <div class="main" :class="cssClassesMain()">
+        <pa-positioning-grid v-if="grid_visible"></pa-positioning-grid>
+        <pa-element
+            v-if="content_visible"
+            v-for="(element, index) in form_document.elements"
+            :key="index"
+            :element="element"
+        />
+    </div>
+
     <pa-window shadow rounded-top non-printable non-selectable top="20" right="20" fixed>
         <template v-slot:title drag-handle gray-gradient class="controls-bar">
             <div @dblclick="controls.options = !controls.options">
@@ -77,14 +87,4 @@
             <p>No muy útil por el momento.</p>
         </div>
     </pa-window>
-
-    <div class="main" :class="cssClassesMain()">
-        <pa-positioning-grid v-if="grid_visible"></pa-positioning-grid>
-        <pa-element
-            v-if="content_visible"
-            v-for="(element, index) in form_document.elements"
-            :key="index"
-            :element="element"
-        />
-    </div>
 </div>
