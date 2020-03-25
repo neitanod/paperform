@@ -2,8 +2,16 @@ html, body {
     overscroll-behavior-y: contain;
 }
 
+.printing .moveable-control-box,
+.printing .moveable-line,
+.printing .moveable-control {
+    display: none !important;
+}
+
 .paperform-app .main {
     overflow: hidden;
+    background-color: white;
+    border: 1px solid transparent;
 }
 
 .paperform-app {
@@ -16,10 +24,6 @@ html, body {
 .paperform-app .main.landscape {
     height: 1000px;
     width: 1440px;
-}
-.paperform-app .main {
-    background-color: white;
-    border: 1px solid transparent;
 }
 .paperform-app .main.border {
     border: 1px solid grey;
@@ -38,6 +42,24 @@ html, body {
 @media print {
     *[non-printable] {
         display: none;
+    }
+
+    .moveable-control-box,
+    .moveable-line,
+    .moveable-control {
+        display: none !important;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+    .paperform-app .main, .paperform-app .main * {
+        visibility: visible;
+    }
+    .paperform-app .main {
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 }
 

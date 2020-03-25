@@ -62,6 +62,7 @@ export default async function() {
                 return this.print('grid');
             },
             print: function(what) {
+                document.getElementsByTagName('body')[0].classList.add('printing');
                 var self = this;
                 var grid_was_visible = this.grid_visible;
                 var content_was_visible = this.content_visible;
@@ -74,6 +75,7 @@ export default async function() {
                         window.print();
                         this.grid_visible = grid_was_visible;
                         this.content_visible = content_was_visible;
+                        document.getElementsByTagName('body')[0].classList.remove('printing');
                     }
                     , 1000);
             },
