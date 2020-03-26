@@ -41,10 +41,8 @@ export default async function() {
         mounted: function() {
             this.$el.style.cssText = this.element.style;
             this.$el.addEventListener('keydown', this.handleKeydown);
-        },
-        beforeUpdate() {
-        },
-        ready: function() {
+
+            this.$refs.moveable.updateRect()
         },
         beforeDestroy: function() {
             this.$el.removeEventListener('keydown', e => console.log(e));
@@ -57,28 +55,28 @@ export default async function() {
         methods: {
             handleKeydown: e => console.log(e),
             handleDrag({ target, transform }) {
-                console.log("onDrag", transform);
+                //console.log("onDrag", transform);
                 target.style.transform = transform;
                 this.publishStyles(target);
             },
             handleResize({ target, width, height }) {
-                console.log("onResize", width, height);
+                //console.log("onResize", width, height);
                 target.style.width = `${width}px`;
                 target.style.height = `${height}px`;
                 this.publishStyles(target);
             },
             handleScale({ target, transform }) {
-                console.log("onScale", transform);
+                //console.log("onScale", transform);
                 target.style.transform = transform;
                 this.publishStyles(target);
             },
             handleRotate({ target, transform }) {
-                console.log("onRotate", transform);
+                //console.log("onRotate", transform);
                 target.style.transform = transform;
                 this.publishStyles(target);
             },
             handleWarp({ target, transform }) {
-                console.log("onWarp", transform);
+                //console.log("onWarp", transform);
                 target.style.transform = transform;
                 this.publishStyles(target);
             },
