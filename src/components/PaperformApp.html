@@ -6,6 +6,7 @@
             v-for="(element, index) in form_document.elements"
             :key="index"
             :element="element"
+            :keepAspect="ctrl_key_pressed"
             @cssInput="handleCssInput(element, $event)"
             @textInput="handleTextInput(element, $event)"
         />

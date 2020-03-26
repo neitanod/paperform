@@ -41,11 +41,20 @@ export default async function() {
                         locked: false
                     },
                     elements: []
-                }
+                },
+                ctrl_key_pressed: false,
+                shift_key_pressed: false,
+                alt_key_pressed: false,
             }
         },
         mounted: function() {
+            window.addEventListener('keydown',this.handleKeydown);
+            window.addEventListener('keyup',this.handleKeyup);
             this.loadFromUrl();
+        },
+        beforeDestroy: function() {
+            window.removeEventListener('keydown',this.handleKeydown);
+            window.removeEventListener('keyup',this.handleKeyup);
         },
         methods: {
             cssClassesMain: function() {
@@ -122,7 +131,27 @@ export default async function() {
             },
             handleTextInput(element, ev){
                 element.text = ev;
-            }
+            },
+            handleKeydown(ev){
+                if ( ev.which == 17 ) {
+                    this.ctrl_key_pressed= true;
+                } else if ( ev.which == 18 ) {
+                    this.alt_key_pressed= true;
+                } else if ( ev.which == 16 ) {
+                    this.shift_key_pressed= true;
+                } else {
+                    console.log(ev)
+                }
+            },
+            handleKeyup(ev){
+                if ( ev.which == 17 ) {
+                    this.ctrl_key_pressed= false;
+                } else if ( ev.which == 18 ) {
+                    this.alt_key_pressed= false;
+                } else if ( ev.which == 16 ) {
+                    this.shift_key_pressed= false;
+                }
+            },
         }
     }
 }

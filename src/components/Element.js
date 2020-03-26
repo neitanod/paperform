@@ -19,34 +19,40 @@ export default async function() {
             'moveable':          VueMoveable
         },
         props: {
-            element: { default: {} }
+            element: { default: {} },
+            keepAspect: { default: false }
         },
         data: function() {
             return {
                 moveable: {
-                    draggable: false,
+                    draggable: true,
                     throttleDrag: 1,
-                    resizable: false,
+                    resizable: true,
                     throttleResize: 1,
-                    keepRatio: false,
+                    keepRatio: this.keepAspect,
                     scalable: (this.element.type == "image"),
                     throttleScale: 0.1,
-                    rotatable: false,
+                    rotatable: true,
                     throttleRotate: 0.2,
-                    pinchable: false,
+                    pinchable: true,
                 },
             }
         },
         mounted: function() {
             this.$el.style.cssText = this.element.style;
             this.$el.addEventListener('keydown', this.handleKeydown);
-            console.log("Mounted");
+        },
+        beforeUpdate() {
         },
         ready: function() {
-            console.log("Ready");
         },
         beforeDestroy: function() {
             this.$el.removeEventListener('keydown', e => console.log(e));
+        },
+        watch: {
+            keepAspect() {
+                this.moveable.keepRatio = this.keepAspect;
+            }
         },
         methods: {
             handleKeydown: e => console.log(e),
