@@ -21,7 +21,7 @@ export default async function() {
         },
         methods: {
             handleInput(e) {
-                element.text = e.target.innerHtml;
+                this.$emit("textInput", e.target.innerText);
             }
         }
     }

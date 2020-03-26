@@ -5,6 +5,8 @@
     @resize="handleResize"
     @scale="handleScale"
     @rotate="handleRotate"
-    @warp="handleWarp">
-    <component v-bind:is="'pa-element-'+element.type" class="pa-element" :element="element" />
+    @warp="handleWarp"
+    @keydown="element.keepRatio=true"
+    @keyup="element.keepRatio=true">
+    <component v-bind:is="'pa-element-'+element.type" class="pa-element" :element="element" @textInput="handleTextInput" />
 </moveable>

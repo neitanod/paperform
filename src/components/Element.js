@@ -24,50 +24,68 @@ export default async function() {
         data: function() {
             return {
                 moveable: {
-                    draggable: true,
+                    draggable: false,
                     throttleDrag: 1,
-                    resizable: true,
+                    resizable: false,
                     throttleResize: 1,
                     keepRatio: false,
                     scalable: (this.element.type == "image"),
-                    throttleScale: 0.01,
-                    rotatable: true,
+                    throttleScale: 0.1,
+                    rotatable: false,
                     throttleRotate: 0.2,
-                    pinchable: true,
-                    origin: false
+                    pinchable: false,
                 },
             }
         },
         mounted: function() {
+            this.$el.style.cssText = this.element.style;
+            this.$el.addEventListener('keydown', this.handleKeydown);
+            console.log("Mounted");
+        },
+        ready: function() {
+            console.log("Ready");
         },
         beforeDestroy: function() {
+            this.$el.removeEventListener('keydown', e => console.log(e));
         },
         methods: {
+            handleKeydown: e => console.log(e),
             handleDrag({ target, transform }) {
                 console.log("onDrag", transform);
                 target.style.transform = transform;
+                this.publishStyles(target);
             },
             handleResize({ target, width, height }) {
                 console.log("onResize", width, height);
                 target.style.width = `${width}px`;
                 target.style.height = `${height}px`;
+                this.publishStyles(target);
             },
             handleScale({ target, transform }) {
                 console.log("onScale", transform);
                 target.style.transform = transform;
+                this.publishStyles(target);
             },
             handleRotate({ target, transform }) {
                 console.log("onRotate", transform);
                 target.style.transform = transform;
+                this.publishStyles(target);
             },
             handleWarp({ target, transform }) {
                 console.log("onWarp", transform);
                 target.style.transform = transform;
+                this.publishStyles(target);
             },
             clearAllStates() {
                 Object.keys(this.states).forEach(key => {
                     this.moveable[key] = false;
                 });
+            },
+            publishStyles(target) {
+                this.$emit('cssInput', target.style.cssText);
+            },
+            handleTextInput(text) {
+                this.$emit("textInput", text);
             }
         }
     }

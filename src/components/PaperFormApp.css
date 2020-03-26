@@ -9,6 +9,7 @@ html, body {
 }
 
 .paperform-app .main {
+    position: relative;
     overflow: hidden;
     background-color: white;
     border: 1px solid transparent;

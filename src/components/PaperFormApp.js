@@ -116,6 +116,12 @@ export default async function() {
             },
             addImageElement: function() {
                 this.form_document.elements.push({ type: "image", url: "no_image.png", style: ""});
+            },
+            handleCssInput(element, ev){
+                element.style = ev;
+            },
+            handleTextInput(element, ev){
+                element.text = ev;
             }
         }
     }

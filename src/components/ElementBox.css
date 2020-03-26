@@ -1,7 +1,5 @@
 div.pa-element-box {
-    border: 1px solid red;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
 }
