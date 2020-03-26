@@ -6,7 +6,14 @@
     @scale="handleScale"
     @rotate="handleRotate"
     @warp="handleWarp"
-    @keydown="element.keepRatio=true"
-    @keyup="element.keepRatio=true">
-    <component v-bind:is="'pa-element-'+element.type" class="pa-element" :element="element" @textInput="handleTextInput" />
+    >
+    <component
+        tabindex="1"
+        :is="'pa-element-'+element.type"
+        class="pa-element"
+        :element="element"
+        @textInput="handleTextInput"
+        @keydown.native="element.keepRatio=true"
+        @keyup.native="element.keepRatio=true"
+    />
 </moveable>
