@@ -1,3 +1,4 @@
 span.pa-element-text {
+    white-space: pre;
     display: inline;
 }
