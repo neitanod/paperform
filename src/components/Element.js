@@ -20,7 +20,8 @@ export default async function() {
         },
         props: {
             element: { default: {} },
-            keepAspect: { default: false }
+            keepAspect: { default: false },
+            snapRotate: { default: false }
         },
         data: function() {
             return {
@@ -76,7 +77,25 @@ export default async function() {
                 this.publishStyles(target);
             },
             handleRotate({ target, transform }) {
-                //console.log("onRotate", transform);
+
+                if ( this.snapRotate ) {
+                    let angle = /rotate\((.+)deg\)/g.exec(transform);
+                    if (angle[1]) {
+                        const angle_float = parseFloat(angle[1]) % 360 ;
+                        let snapTo = angle_float;
+                        const snapToDegrees = [0, 45, 90, 135, 180, 225, 270, 315, 360];
+                        const closeness = 5;
+                        for (let i in snapToDegrees) {
+                            if (
+                                angle_float > snapToDegrees[i]-closeness &&
+                                angle_float < snapToDegrees[i]+closeness
+                            ) {
+                                snapTo = snapToDegrees[i];
+                            }
+                        }
+                        transform = transform.replace('rotate('+angle[1]+'deg)','rotate('+snapTo+'deg)')
+                    }
+                }
                 target.style.transform = transform;
                 this.publishStyles(target);
             },
