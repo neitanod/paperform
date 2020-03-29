@@ -56,6 +56,9 @@ export default async function() {
         },
         methods: {
             handleKeydown: e => console.log(e),
+            handleClick(ev) {
+                this.$refs.component.click(ev);
+            },
             handleDrag({ target, transform }) {
                 //console.log("onDrag", transform);
                 target.style.transform = transform;

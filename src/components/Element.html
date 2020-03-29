@@ -7,8 +7,10 @@
     @scale="handleScale"
     @rotate="handleRotate"
     @warp="handleWarp"
+    @click.native="handleClick"
     >
     <component
+        ref="component"
         tabindex="1"
         :is="'pa-element-'+element.type"
         class="pa-element"

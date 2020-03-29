@@ -22,6 +22,9 @@ export default async function() {
         methods: {
             handleInput(e) {
                 this.$emit("textInput", e.target.innerText);
+            },
+            click(ev) {
+                this.$el.focus();
             }
         }
     }
