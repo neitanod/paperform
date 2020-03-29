@@ -28,13 +28,14 @@ export default async function() {
                     draggable: true,
                     throttleDrag: 1,
                     resizable: true,
-                    throttleResize: 1,
                     keepRatio: this.keepAspect,
                     scalable: (this.element.type == "image"),
-                    throttleScale: 0.1,
+                    //throttleResize: 1,
+                    //throttleScale: 0.1,
+                    //throttleRotate: 0.2,
                     rotatable: true,
-                    throttleRotate: 0.2,
                     pinchable: true,
+                    renderDirections: ["s", "se", "e"],
                 },
             }
         },
@@ -42,7 +43,8 @@ export default async function() {
             this.$el.style.cssText = this.element.style;
             this.$el.addEventListener('keydown', this.handleKeydown);
 
-            this.$refs.moveable.updateRect()
+            this.$refs.moveable.updateRect();
+            setTimeout( () => this.$refs.moveable.updateRect(), 100);
         },
         beforeDestroy: function() {
             this.$el.removeEventListener('keydown', e => console.log(e));
