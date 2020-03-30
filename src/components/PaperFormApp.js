@@ -194,7 +194,6 @@ export default async function() {
                 }
             },
             focusNone(){
-                console.log("focus: none");
                 for (var i in this.form_document.elements) {
                     this.$set(this.form_document.elements[i], 'focus', false);
                 }
@@ -202,7 +201,6 @@ export default async function() {
             focus(element){
                 this.focusNone();
                 this.$set(element, 'focus', true);
-                console.log("focus: element");
             },
             historySaveState(){
                 this.historySaveStateFn();
@@ -210,7 +208,6 @@ export default async function() {
             historyBack(){
                 const last = this.history.pop();
                 if ( last ) {
-                    console.log("LAST:",last);
                     this.futureHistory.push(JSON.stringify(this.form_document));
                     this.form_document = JSON.parse(last);
                     this.$forceUpdate();

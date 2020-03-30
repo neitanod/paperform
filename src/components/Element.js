@@ -50,7 +50,7 @@ export default async function() {
             this.updateMoveable();
         },
         beforeDestroy: function() {
-            this.$el.removeEventListener('keydown', e => console.log(e));
+            this.$el.removeEventListener('keydown', this.handleKeydown);
         },
         watch: {
             keepAspect() {
@@ -69,7 +69,6 @@ export default async function() {
                 setTimeout( () => this.$refs.moveable.updateRect(), 100);
             },
             handleKeydown(ev) {
-                console.log(ev);
                 if ( ev.which == 67 && ev.ctrlKey && !this.locked ) {
                     this.$emit('copy', this.element);
                 } else if ( ev.which == 46 && ev.ctrlKey && !this.locked ) {
