@@ -73,3 +73,10 @@ html, body {
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Opera and Firefox */
 }
+
+.moveable-line {
+    background: none !important;
+}
+.moveable-rotation-line {
+    background: #4af !important;
+}

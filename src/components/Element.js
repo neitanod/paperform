@@ -21,32 +21,33 @@ export default async function() {
         props: {
             element: { default: {} },
             keepAspect: { default: false },
-            snapRotate: { default: false }
+            snapRotate: { default: true },
+            locked: { default: false }
         },
         data: function() {
             return {
                 moveable: {
-                    draggable: true,
+                    draggable: false,
                     throttleDrag: 1,
-                    resizable: true,
+                    resizable: false,
                     keepRatio: this.keepAspect,
                     scalable: (this.element.type == "image"),
                     //throttleResize: 1,
                     //throttleScale: 0.1,
                     //throttleRotate: 0.2,
-                    rotatable: true,
-                    pinchable: true,
+                    rotatable: false,
+                    pinchable: false,
                     renderDirections: ["s", "se", "e"],
-                    origin: true,
+                    origin: false,
                 },
             }
         },
         mounted: function() {
-            this.$el.style.cssText = this.element.style;
             this.$el.addEventListener('keydown', this.handleKeydown);
-
-            this.$refs.moveable.updateRect();
-            setTimeout( () => this.$refs.moveable.updateRect(), 100);
+            this.updateMoveable();
+        },
+        updated: function() {
+            this.updateMoveable();
         },
         beforeDestroy: function() {
             this.$el.removeEventListener('keydown', e => console.log(e));
@@ -57,10 +58,21 @@ export default async function() {
             }
         },
         methods: {
+            updateMoveable() {
+                this.$el.style.cssText = this.element.style;
+                this.moveable.draggable = this.element.focus && !this.locked;
+                this.moveable.resizable = this.element.focus && !this.locked;
+                this.moveable.rotatable = this.element.focus && !this.locked;
+                this.moveable.pinchable = this.element.focus && !this.locked;
+                this.moveable.origin = this.element.focus && !this.locked;
+                this.$refs.moveable.updateRect();
+                setTimeout( () => this.$refs.moveable.updateRect(), 100);
+            },
             handleKeydown: e => console.log(e),
             handleClick(ev) {
                 top.m = this.$refs.moveable;  // para que jueguen con m en la consola :)
                 this.$refs.component.click(ev);
+                this.$emit('click', this.element);
             },
             handleDrag({ target, transform }) {
                 //console.log("onDrag", transform);
@@ -85,7 +97,10 @@ export default async function() {
                     if (angle[1]) {
                         const angle_float = parseFloat(angle[1]) % 360 ;
                         let snapTo = angle_float;
-                        const snapToDegrees = [0, 45, 90, 135, 180, 225, 270, 315, 360];
+                        const snapToDegrees = [
+                            -360, -315, -270, -225, -180, -135, -90, -45,
+                            0, 45, 90, 135, 180, 225, 270, 315, 360
+                        ];
                         const closeness = 5;
                         for (let i in snapToDegrees) {
                             if (

@@ -118,10 +118,10 @@ export default async function() {
                 ;
             },
             addTextElement: function() {
-                this.form_document.elements.push({ type: "text", text: "Text" , style: ""});
+                this.form_document.elements.push({ type: "text", text: "Text" , pre: true, style: ""});
             },
             addBoxElement: function() {
-                this.form_document.elements.push({ type: "box", style: "" });
+                this.form_document.elements.push({ type: "box", style: "width: 100px; height: 100px;" });
             },
             addImageElement: function() {
                 this.form_document.elements.push({ type: "image", url: "no_image.png", style: ""});
@@ -152,6 +152,17 @@ export default async function() {
                     this.shift_key_pressed= false;
                 }
             },
+            focusNone(){
+                console.log("focus: none");
+                for (var i in this.form_document.elements) {
+                    this.$set(this.form_document.elements[i], 'focus', false);
+                }
+            },
+            focus(element){
+                this.focusNone();
+                this.$set(element, 'focus', true);
+                console.log("focus: element");
+            }
         }
     }
 }

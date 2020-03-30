@@ -1,6 +1,7 @@
 <moveable
     ref="moveable"
     class="moveable"
+    :class="{ focus: element.focus }"
     v-bind="moveable"
     @drag="handleDrag"
     @resize="handleResize"

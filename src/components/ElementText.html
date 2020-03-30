@@ -1,6 +1,8 @@
 <span
     class="pa-element-text"
+    :class="{pre: element.pre}"
     contenteditable
     @blur="handleInput"
     :style="element.styles"
->{{ element.text }}</span>
+    v-html="element.text"
+></span>

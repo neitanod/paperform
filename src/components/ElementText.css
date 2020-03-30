@@ -1,4 +1,6 @@
 span.pa-element-text {
-    white-space: pre;
     display: inline;
+}
+span.pa-element-text.pre {
+    white-space: pre;
 }

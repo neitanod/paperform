@@ -7,9 +7,11 @@
             :key="index"
             :element="element"
             :keepAspect="ctrl_key_pressed"
-            :snapRotate="ctrl_key_pressed"
+            :snapRotate="!ctrl_key_pressed"
             @cssInput="handleCssInput(element, $event)"
             @textInput="handleTextInput(element, $event)"
+            @click="focus"
+            :locked="form_document.config.locked"
         />
     </div>
 

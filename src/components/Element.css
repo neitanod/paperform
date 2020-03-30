@@ -3,3 +3,10 @@ div.moveable {
     position: absolute;
     transform-origin: top left;
 }
+div.moveable{
+    z-index: 5;
+}
+div.moveable.focus{
+    outline: 1px solid #4af;
+    z-index: 10;
+}
