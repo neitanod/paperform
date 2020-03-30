@@ -12,6 +12,8 @@
             @textInput="handleTextInput(element, $event)"
             @click="focus"
             :locked="form_document.config.locked"
+            @copy="copy"
+            @remove="remove"
         />
     </div>
 

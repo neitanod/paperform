@@ -68,7 +68,14 @@ export default async function() {
                 this.$refs.moveable.updateRect();
                 setTimeout( () => this.$refs.moveable.updateRect(), 100);
             },
-            handleKeydown: e => console.log(e),
+            handleKeydown(ev) {
+                console.log(ev);
+                if ( ev.which == 67 && ev.ctrlKey && !this.locked ) {
+                    this.$emit('copy', this.element);
+                } else if ( ev.which == 46 && ev.ctrlKey && !this.locked ) {
+                    this.$emit('remove', this.element);
+                }
+            },
             handleClick(ev) {
                 top.m = this.$refs.moveable;  // para que jueguen con m en la consola :)
                 this.$refs.component.click(ev);

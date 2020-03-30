@@ -2,6 +2,7 @@ div.moveable {
     display: block;
     position: absolute;
     transform-origin: top left;
+    outline: 1px solid #ccc;
 }
 div.moveable{
     z-index: 5;
@@ -9,4 +10,10 @@ div.moveable{
 div.moveable.focus{
     outline: 1px solid #4af;
     z-index: 10;
+}
+@media print{
+    div.moveable,
+    div.moveable.focus{
+        outline: none;
+    }
 }

@@ -27,7 +27,21 @@ async function addCssFile(file)
     document.body.appendChild(tag);
 }
 
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		clearTimeout(timeout);
+		timeout = setTimeout(function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		}, wait);
+		if (immediate && !timeout) func.apply(context, args);
+	};
+}
+
 export default {
     readFile: readFile,
     addCssFile: addCssFile,
+    debounce: debounce,
 }

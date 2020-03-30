@@ -1,6 +1,7 @@
 import functions from './functions.js';
 const readFile = functions.readFile;
 const addCssFile = functions.addCssFile;
+const debounce = functions.debounce;
 
 // La positioning grid es una grilla que sirve para imprimir sobre el formulario
 // o papel de igual tamaño, y usar como guia para ubicar los "slots" o etiquetas
@@ -45,12 +46,20 @@ export default async function() {
                 ctrl_key_pressed: false,
                 shift_key_pressed: false,
                 alt_key_pressed: false,
+                history: [],
+                futureHistory: []
             }
         },
         mounted: function() {
             window.addEventListener('keydown',this.handleKeydown);
             window.addEventListener('keyup',this.handleKeyup);
             this.loadFromUrl();
+        },
+        created() {
+            this.historySaveStateFn = debounce(()=>{
+                    this.history.push(JSON.stringify(this.form_document));
+                    this.futureHistory = [];
+                }, 30);
         },
         beforeDestroy: function() {
             window.removeEventListener('keydown',this.handleKeydown);
@@ -118,18 +127,23 @@ export default async function() {
                 ;
             },
             addTextElement: function() {
+                this.historySaveState();
                 this.form_document.elements.push({ type: "text", text: "Text" , pre: true, style: ""});
             },
             addBoxElement: function() {
+                this.historySaveState();
                 this.form_document.elements.push({ type: "box", style: "width: 100px; height: 100px;" });
             },
             addImageElement: function() {
+                this.historySaveState();
                 this.form_document.elements.push({ type: "image", url: "no_image.png", style: ""});
             },
             handleCssInput(element, ev){
+                this.historySaveState();
                 element.style = ev;
             },
             handleTextInput(element, ev){
+                this.historySaveState();
                 element.text = ev;
             },
             handleKeydown(ev){
@@ -139,6 +153,12 @@ export default async function() {
                     this.alt_key_pressed= true;
                 } else if ( ev.which == 16 ) {
                     this.shift_key_pressed= true;
+                } else if ( ev.which == 86 && ev.ctrlKey ) {
+                    this.paste();
+                } else if ( ev.which == 90 && ev.ctrlKey ) {
+                    this.historyBack();
+                } else if ( ev.which == 89 && ev.ctrlKey ) {
+                    this.historyForward();
                 } else {
                     console.log(ev)
                 }
@@ -150,6 +170,27 @@ export default async function() {
                     this.alt_key_pressed= false;
                 } else if ( ev.which == 16 ) {
                     this.shift_key_pressed= false;
+                } else if ( ev.which == 27 ) {
+                    this.focusNone();
+                }
+            },
+            copy(element){
+                if ( !this.form_document.config.locked ) {
+                    this.copied = element;
+                }
+            },
+            paste(ev){
+                if ( this.copied && !this.form_document.config.locked ) {
+                    this.historySaveState();
+                    this.form_document.elements.push(JSON.parse(JSON.stringify(this.copied)));
+                    if ( ev ) {
+                        ev.preventDefault();
+                    }
+                }
+            },
+            remove(element){
+                if ( !this.form_document.config.locked ) {
+                    this.form_document.elements.splice(this.form_document.elements.indexOf(element), 1);
                 }
             },
             focusNone(){
@@ -162,6 +203,26 @@ export default async function() {
                 this.focusNone();
                 this.$set(element, 'focus', true);
                 console.log("focus: element");
+            },
+            historySaveState(){
+                this.historySaveStateFn();
+            },
+            historyBack(){
+                const last = this.history.pop();
+                if ( last ) {
+                    console.log("LAST:",last);
+                    this.futureHistory.push(JSON.stringify(this.form_document));
+                    this.form_document = JSON.parse(last);
+                    this.$forceUpdate();
+                }
+            },
+            historyForward(){
+                const next = this.futureHistory.pop();
+                if ( next ) {
+                    this.history.push(JSON.stringify(this.form_document));
+                    this.form_document = JSON.parse(next);
+                    this.$forceUpdate();
+                }
             }
         }
     }
