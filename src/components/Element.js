@@ -78,7 +78,12 @@ export default async function() {
             },
             handleClick(ev) {
                 top.m = this.$refs.moveable;  // para que jueguen con m en la consola :)
-                this.$refs.component.click(ev);
+                if (
+                    this.$refs.component &&
+                    this.$refs.component.click
+                ) {
+                    this.$refs.component.click(ev);
+                }
                 this.$emit('click', this.element);
             },
             handleDrag({ target, transform }) {
