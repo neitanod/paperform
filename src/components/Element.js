@@ -37,6 +37,7 @@ export default async function() {
                     rotatable: true,
                     pinchable: true,
                     renderDirections: ["s", "se", "e"],
+                    origin: true,
                 },
             }
         },
@@ -58,6 +59,7 @@ export default async function() {
         methods: {
             handleKeydown: e => console.log(e),
             handleClick(ev) {
+                top.m = this.$refs.moveable;  // para que jueguen con m en la consola :)
                 this.$refs.component.click(ev);
             },
             handleDrag({ target, transform }) {

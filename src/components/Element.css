@@ -1,5 +1,5 @@
 div.moveable {
     display: block;
     position: absolute;
-    transform-origin: 0,0;
+    transform-origin: top left;
 }
